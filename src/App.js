@@ -1,65 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const foodILike = [
-  {
-    id: 1,
-    name: "kimchi",
-    image:
-      "https://t1.daumcdn.net/liveboard/dailylife/222d88e5c7dc496c8e8a8a56c3452e52.JPG",
-    rating: 4
-  },
-  {
-    id: 2,
-    name: "ramen",
-    image:
-      "https://t1.daumcdn.net/liveboard/dailylife/222d88e5c7dc496c8e8a8a56c3452e52.JPG",
-    rating: 4.3
-  },
-  {
-    id: 3,
-    name: "donkas",
-    image:
-      "https://t1.daumcdn.net/liveboard/dailylife/222d88e5c7dc496c8e8a8a56c3452e52.JPG",
-    rating: 4.9
-  },
-  {
-    id: 4,
-    name: "kimbab",
-    image:
-      "https://t1.daumcdn.net/liveboard/dailylife/222d88e5c7dc496c8e8a8a56c3452e52.JPG",
-    rating: 4.5
+class App extends React.Component {
+  state = {
+    count: 0
+  };
+  add = () => {
+    console.log("add");
+  };
+  minus = () => {
+    console.log("minus");
+  };
+
+  render() {
+    return (
+      <div>
+        <h1>The number is: {this.state.count}</h1>
+        <button onClick={this.add}>Add</button>
+        <button onClick={this.minus}>Minus</button>
+      </div>
+    );
   }
-];
-
-function Food({ name, picture, rating }) {
-  return (
-    <div>
-      <h2>I love {name}</h2>
-      <h2>👍{rating}/5.0</h2>
-      <img src={picture} alt={name}></img>
-    </div>
-  );
-}
-Food.propTypes = {
-  name: PropTypes.string.isRequired,
-  picture: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired
-};
-
-function App() {
-  return (
-    <div>
-      {foodILike.map(dish => (
-        <Food
-          key={dish.id}
-          name={dish.name}
-          picture={dish.image}
-          rating={dish.rating}
-        ></Food>
-      ))}
-    </div>
-  );
 }
 
 export default App;
