@@ -1,51 +1,63 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const foodILike = [
   {
     id: 1,
     name: "kimchi",
     image:
-      "https://t1.daumcdn.net/liveboard/dailylife/222d88e5c7dc496c8e8a8a56c3452e52.JPG"
+      "https://t1.daumcdn.net/liveboard/dailylife/222d88e5c7dc496c8e8a8a56c3452e52.JPG",
+    rating: 4
   },
   {
     id: 2,
     name: "ramen",
     image:
-      "https://t1.daumcdn.net/liveboard/dailylife/222d88e5c7dc496c8e8a8a56c3452e52.JPG"
+      "https://t1.daumcdn.net/liveboard/dailylife/222d88e5c7dc496c8e8a8a56c3452e52.JPG",
+    rating: 4.3
   },
   {
     id: 3,
     name: "donkas",
     image:
-      "https://t1.daumcdn.net/liveboard/dailylife/222d88e5c7dc496c8e8a8a56c3452e52.JPG"
+      "https://t1.daumcdn.net/liveboard/dailylife/222d88e5c7dc496c8e8a8a56c3452e52.JPG",
+    rating: 4.9
   },
   {
     id: 4,
     name: "kimbab",
     image:
-      "https://t1.daumcdn.net/liveboard/dailylife/222d88e5c7dc496c8e8a8a56c3452e52.JPG"
+      "https://t1.daumcdn.net/liveboard/dailylife/222d88e5c7dc496c8e8a8a56c3452e52.JPG",
+    rating: 4.5
   }
 ];
 
-function Food({ name, picture }) {
-  // props
-
+function Food({ name, picture, rating }) {
   return (
     <div>
-      <h2>I like {name}</h2>
-      <img src={picture} alt={name} />
+      <h2>I love {name}</h2>
+      <h2>👍{rating}/5.0</h2>
+      <img src={picture} alt={name}></img>
     </div>
   );
 }
+Food.propTypes = {
+  name: PropTypes.string.isRequired,
+  picture: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired
+};
 
 function App() {
   return (
     <div>
-      {/* dish는 foodILkie배열의 각각item이고 => 까지의 해석은 dish라는 각각의 아이템에 함수를 적용해서 사용해준다 라는 의미.*/}
       {foodILike.map(dish => (
-        <Food key={dish.id} name={dish.name} picture={dish.image} />
+        <Food
+          key={dish.id}
+          name={dish.name}
+          picture={dish.image}
+          rating={dish.rating}
+        ></Food>
       ))}
-      {/*  위는 renderFood라는함수를 호출해서 foodILike의 각각 object에 적용시킴*/}
     </div>
   );
 }
